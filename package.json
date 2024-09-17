@@ -1,0 +1,33 @@
+{
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "eslint": "^9.10.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev-frontend\"",
+    "dev-frontend": "cd frontend && npm run dev",
+    "dev-backend": "cd backend && python manage.py runserver"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.py": [
+      "pylint --disable=R,C"
+    ],
+    "*.css": [
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  }
+}
