@@ -7,9 +7,9 @@
     "prettier": "^3.3.3"
   },
   "scripts": {
-    "dev": "concurrently \"npm run dev-frontend\"",
-    "dev-frontend": "cd frontend && npm run dev",
-    "dev-backend": "cd backend && python manage.py runserver"
+    "dev": "concurrently --raw \"npm run dev-backend\" \"npm run dev-frontend\"",
+    "dev-frontend": "cd frontend/ems_ui && npm run dev",
+    "dev-backend": "cd backend && source venv/bin/activate && python manage.py runserver"
   },
   "lint-staged": {
     "*.js": [
