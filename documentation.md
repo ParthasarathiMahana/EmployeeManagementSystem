@@ -31,7 +31,7 @@
     - using turbo repo we can define tasks that can call transpiler etc to do the job.
     - dependency management and caching during builds
 
-- Command to create a turbo rep: npx create-turbo@latest
+- Command to create a turbo repo: npx create-turbo@latest
 
 - turbo repo folder structure:
     - apps
@@ -52,3 +52,36 @@
 - add react app in a turbo repo:
     - go to app folder and run : 'npm create vite@latest'
     - go to parent folder and run "npm i" (we can do it inside the app, but if we do it in parent folder it takes care of all the apps we have like our react app)
+-------- 
+### Week-2
+- add an express app in turbo repo:
+    - go to app folder and create "backend" folder
+    - do npm init.
+    - install express : npm i express
+    - add build script in package.json.
+    - in tsconfig.json add:
+    ```js 
+    {
+        "extends":"@repo/typescript-config/base.json",
+        "compilerOptions": {
+            "rootDir": "./src",
+            "outDir": "./dist",
+            "lib": ["ES2015"],
+            "module": "NodeNext"
+        },
+        "exclude": ["node_modules"],
+        "include": ["."]
+    }
+    ```
+- add a common folder which will contain code that will be shared among both font-end and back-end code.
+    - in "packages" folder add a "common" folder to keep the common code.
+    - do npm init --> create package.json
+    - create "src" folder to keep the sharable files.
+    - add ts.config and add:
+    ```js
+    {
+        "extends":"@repo/typescript-config/base.json"
+    }
+    ```
+    - do npm i in root folder. so that the common folder will be there in "node_modules" and thus will be availabl for BE and FE.
+    - now using import statement add  the common code to BE and FE.
